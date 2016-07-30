@@ -1,0 +1,39 @@
+# Express.js
+
+## Init a project
+```js
+mkdir my-project
+cd my-project
+npm init
+```
+
+## Add custom modules to a project
+
+```js
+npm install -g <ModuleName>
+```
+
+**add it to package.json automatically**
+```js
+npm install <ModuleName> --save //--save-exact can be added if the version need to be exactly this one (better for production app)
+```
+
+## Use scripts in package.json
+```js
+"scripts": {
+  "preinstall":"node initMongo.js",
+  "postinstall": "bower install && grunt build",
+  "start": "node server.js" //or "scripts/postinstall.sh"
+}
+```
+
+## Gitignore for express project
+```js
+//remove everything related to node_modules from git because it's already in package.json
+echo 'node_modules' >> .gitignore
+$ git rm -r --cached node_modules
+$ git commit -am 'ignore node_modules'
+//Same for the logs
+echo 'npm-debug.log' >> .gitignore
+$ git commit -am 'ignore npm-debug'
+```
